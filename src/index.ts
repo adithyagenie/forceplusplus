@@ -4,12 +4,12 @@ config();
 import { FastifyInstance } from "fastify";
 import { startserver } from "./api/server";
 import { botInit } from "./bot/bot";
-import { scheduleLCContests } from "./api/lcFetch";
+import { contestScheduler } from "./helpers/scheduler";
 
 
 export let server: FastifyInstance;
 startserver().then((s) => {
 	server = s;
 });
-scheduleLCContests().catch(e => console.error(e));
+contestScheduler().catch(e => console.error(e));
 botInit().catch(e => console.error(e));
