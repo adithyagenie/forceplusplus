@@ -20,7 +20,6 @@ function getNextBiweeklyDate(): Date {
 
 
 export async function lcSchedule() {
-	await gracefulShutdown();
 	const contestNames = await fetchLCContests();
 	const biweekly = contestNames.filter(o =>
 		o.key.match(/^biweekly-contest-(\d+)$/)

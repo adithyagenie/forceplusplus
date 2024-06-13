@@ -1,4 +1,5 @@
 import { bot } from "../bot";
+import { CodeforcesAPI } from "codeforces-api-ts";
 
 export async function reminderContestLC(contestName: string, contestKey: string): Promise<void> {
 	await bot.api.sendMessage(parseInt(process.env.CHAT_ID as string),
@@ -10,4 +11,14 @@ export async function reminderContestCodeChef(): Promise<void> {
 	await bot.api.sendMessage(parseInt(process.env.CHAT_ID as string),
 		`CodeChef contest is in ~10 minutes.\n
 Attend the contest here: https://www.codechef.com/contests/`);
+}
+
+export async function reminderContestCF(contestName: string, contestID: number, contestTime: Date) {
+	let options: {timeZone: string, timeStyle: "short"} = {
+			timeZone: 'Asia/Calcutta',
+			timeStyle: "short"
+		};
+	await bot.api.sendMessage(parseInt(process.env.CHAT_ID as string),
+		`${contestName} at ${new Date(contestTime).toLocaleTimeString('en-US', options)} IST starts in ~10 minutes.
+Attend the contest here: https://codeforces.com/contests/${contestID}`);
 }
