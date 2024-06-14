@@ -1,5 +1,4 @@
 import { bot } from "../bot";
-import { CodeforcesAPI } from "codeforces-api-ts";
 
 export async function reminderContestLC(contestName: string, contestKey: string): Promise<void> {
 	await bot.api.sendMessage(parseInt(process.env.CHAT_ID as string),
