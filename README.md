@@ -29,7 +29,7 @@ variables.
     WEBHOOK_URL="your_webhook_url"
     WEBHOOK_SECRET="your_webhook_secret"
     PORT=your_port_number
-    CHAT_ID="your_chat_id"
+    CHAT_ID="your_chat_ids seperated by commas"
     ```
 
 4. Run the bot:
@@ -44,7 +44,7 @@ variables.
 - **WEBHOOK_URL**: The URL for the webhook (required if using webhook mode).
 - **WEBHOOK_SECRET**: The secret for the webhook (required if using webhook mode).
 - **PORT**: The port number to run the webhook server on (required if using webhook mode).
-- **CHAT_ID**: The chat ID of the group or person where the bot will send notifications.
+- **CHAT_ID**: The chat IDs of the group or person where the bot will send notifications, seperated by commas. 
 
 ## Usage
 

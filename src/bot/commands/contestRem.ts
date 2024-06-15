@@ -1,15 +1,21 @@
 import { bot } from "../bot";
 
 export async function reminderContestLC(contestName: string, contestKey: string): Promise<void> {
-	await bot.api.sendMessage(parseInt(process.env.CHAT_ID as string),
-		`LeetCode ${contestName} is in ~10 minutes.\n
+	const chatids = (process.env.CHAT_ID as string).split(",").map(i => parseInt(i));
+	for (const id of chatids) {
+		await bot.api.sendMessage(id,
+			`LeetCode ${contestName} is in ~10 minutes.\n
 Attend the contest here: https://leetcode.com/contest/${contestKey}/`);
+	}
 }
 
 export async function reminderContestCodeChef(): Promise<void> {
-	await bot.api.sendMessage(parseInt(process.env.CHAT_ID as string),
-		`CodeChef contest is in ~10 minutes.\n
+	const chatids = (process.env.CHAT_ID as string).split(",").map(i => parseInt(i));
+	for (const id of chatids) {
+		await bot.api.sendMessage(id,
+			`CodeChef contest is in ~10 minutes.\n
 Attend the contest here: https://www.codechef.com/contests/`);
+	}
 }
 
 export async function reminderContestCF(contestName: string, contestID: number, contestTime: Date) {
@@ -17,7 +23,10 @@ export async function reminderContestCF(contestName: string, contestID: number, 
 		timeZone: 'Asia/Calcutta',
 		timeStyle: "short"
 	};
-	await bot.api.sendMessage(parseInt(process.env.CHAT_ID as string),
-		`${contestName} at ${new Date(contestTime).toLocaleTimeString('en-US', options)} IST starts in ~10 minutes.
+	const chatids = (process.env.CHAT_ID as string).split(",").map(i => parseInt(i));
+	for (const id of chatids) {
+		await bot.api.sendMessage(id,
+			`${contestName} at ${new Date(contestTime).toLocaleTimeString('en-US', options)} IST starts in ~10 minutes.
 Attend the contest here: https://codeforces.com/contests/${contestID}`);
+	}
 }

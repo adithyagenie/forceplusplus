@@ -1,10 +1,11 @@
 import { config } from "dotenv";
+
+config();
+
 import { FastifyInstance } from "fastify";
 import { startserver } from "./api/server";
 import { botInit } from "./bot/bot";
 import { contestScheduler } from "./helpers/scheduler";
-
-config();
 
 if (process.env.BOT_TOKEN === undefined ||
 	process.env.RUN_METHOD === undefined ||
