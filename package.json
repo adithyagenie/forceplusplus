@@ -19,7 +19,8 @@
     "fastify": "^4.27.0",
     "grammy": "^1.24.1",
     "leetcode-query": "^1.2.3",
-    "node-schedule": "^2.1.1"
+    "node-schedule": "^2.1.1",
+    "@grammyjs/transformer-throttler": "^1.2.1"
   },
   "devDependencies": {
     "@grammyjs/types": "^3.8.0",
