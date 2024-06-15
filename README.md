@@ -1,10 +1,13 @@
 # Force++ (F++)
 
-Force++ (F++ for short) is a Telegram bot designed to notify users about upcoming coding contests on popular competitive programming platforms. Currently, the bot supports notifications for LeetCode, Codeforces and CodeChef contests.
+Force++ (F++ for short) is a Telegram bot designed to notify users about upcoming coding contests on popular competitive
+programming platforms. Currently, the bot supports notifications for LeetCode, Codeforces and CodeChef contests.
 
 ## ⚠️ Development Status
 
-**Note: This bot is heavily unstable and highly in development.** Use it at your own risk, and expect frequent changes and potential issues. As of now, it works for a single group or person configured by the chat ID in environment variables.
+**Note: This bot is heavily unstable and highly in development.** Use it at your own risk, and expect frequent changes
+and potential issues. As of now, it works for a single group or person configured by the chat ID in environment
+variables.
 
 ## Installation
 

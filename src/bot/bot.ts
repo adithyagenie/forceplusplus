@@ -11,7 +11,7 @@ export async function botInit() {
 	setCommands(bot);
 	bot.hears(/^\/start/, async(ctx) => await startCommand(ctx));
 	bot.hears(/^\/help/, async(ctx) => await helpCommand(ctx));
-	bot.hears(/.+/, async(ctx) => await messageSink(ctx));
+	bot.chatType("private").hears(/.+/, async(ctx) => await messageSink(ctx));
 	console.log("*********************");
 	console.log("Force++ has started!");
 	console.log("*********************");

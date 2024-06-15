@@ -1,0 +1,13 @@
+when:
+  - event: push
+
+steps:
+  - name: Build & Push
+    image: git.ptr.moe/baalajimaestro/build-runner
+    commands:
+      - /dockerd-entrypoint.sh dockerd 2&> /dev/null &
+      - echo $DOCKER_PASSWORD | docker login git.ptr.moe --username ${CI_REPO_OWNER} --password-stdin
+      - docker build . -t git.ptr.moe/adithyagenie/forceplusplus:latest
+      - docker push git.ptr.moe/adithyagenie/forceplusplus:latest
+    secrets: [ docker_password ]
+    privileged: true

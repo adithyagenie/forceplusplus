@@ -10,8 +10,7 @@ export async function cfFetchContests(): Promise<{ name: string; startTime: numb
 			id: o.id,
 			startTime: o.startTimeSeconds as number
 		}));
-	}
-	else {
+	} else {
 		throw new Error("Unable to reach Codeforces API :(");
 	}
 }

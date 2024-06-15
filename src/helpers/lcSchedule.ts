@@ -1,4 +1,4 @@
-import { gracefulShutdown, RecurrenceRule, scheduleJob } from "node-schedule";
+import { RecurrenceRule, scheduleJob } from "node-schedule";
 import { reminderContestLC } from "../bot/commands/contestRem";
 import { fetchLCContests } from "../api/lcFetch";
 
@@ -18,7 +18,6 @@ function getNextBiweeklyDate(): Date {
 }
 
 
-
 export async function lcSchedule() {
 	const contestNames = await fetchLCContests();
 	const biweekly = contestNames.filter(o =>
@@ -29,7 +28,7 @@ export async function lcSchedule() {
 	);
 
 	if (biweekly.length > 0) {
-		biweekly.sort((a, b) => a > b ? - 1 : 1);
+		biweekly.sort((a, b) => a > b ? -1 : 1);
 		const matches = biweekly[0].key.match(/^biweekly-contest-(\d+)$/);
 
 		const newnum = matches ? parseInt(matches[1]) + 1 : -1;
@@ -39,13 +38,13 @@ export async function lcSchedule() {
 		const date = getNextBiweeklyDate();
 		date.setMinutes(date.getMinutes() - 10);
 
-		scheduleJob(`${newname}`, date, async function (newname: string, newkey: string) {
+		scheduleJob(`${newname}`, date, async function(newname: string, newkey: string) {
 			await reminderContestLC(newname, newkey)
 		}.bind(null, newname, newkey));
 	}
 
 	if (weekly.length > 0) {
-		weekly.sort((a, b) => a > b ? - 1 : 1);
+		weekly.sort((a, b) => a > b ? -1 : 1);
 		const matches = weekly[0].key.match(/^weekly-contest-(\d+)$/);
 
 		const newnum = matches ? parseInt(matches[1]) + 1 : -1;
@@ -59,7 +58,7 @@ export async function lcSchedule() {
 		weeklyJob.second = 0;
 		weeklyJob.tz = "Etc/UTC";
 
-		scheduleJob(`${newname}`, weeklyJob, async function (newname: string, newkey: string) {
+		scheduleJob(`${newname}`, weeklyJob, async function(newname: string, newkey: string) {
 			await reminderContestLC(newname, newkey)
 		}.bind(null, newname, newkey));
 

@@ -30,12 +30,11 @@ export async function fetchLCContests() {
 	if (resp.ok) {
 		const res = await resp.json() as PastContestsResponse;
 		let contestNames = res.data.pastContests.data.map(o => {
-			return {key: o.titleSlug, name: o.title};
+			return { key: o.titleSlug, name: o.title };
 		});
 		contestNames.sort();
 		return contestNames;
-	}
-	else {
+	} else {
 		throw new Error("Can't access LeetCode API :(");
 	}
 }

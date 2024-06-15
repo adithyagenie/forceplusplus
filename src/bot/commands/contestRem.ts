@@ -13,10 +13,10 @@ Attend the contest here: https://www.codechef.com/contests/`);
 }
 
 export async function reminderContestCF(contestName: string, contestID: number, contestTime: Date) {
-	let options: {timeZone: string, timeStyle: "short"} = {
-			timeZone: 'Asia/Calcutta',
-			timeStyle: "short"
-		};
+	let options: { timeZone: string, timeStyle: "short" } = {
+		timeZone: 'Asia/Calcutta',
+		timeStyle: "short"
+	};
 	await bot.api.sendMessage(parseInt(process.env.CHAT_ID as string),
 		`${contestName} at ${new Date(contestTime).toLocaleTimeString('en-US', options)} IST starts in ~10 minutes.
 Attend the contest here: https://codeforces.com/contests/${contestID}`);
