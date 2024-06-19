@@ -35,7 +35,8 @@ export async function fetchLCContests() {
 		contestNames.sort();
 		return contestNames;
 	} else {
-		throw new Error("Can't access LeetCode API :(");
+		throw new Error(`Can't access LeetCode API :(
+Error: ${resp.status} - ${resp.statusText}`);
 	}
 }
 

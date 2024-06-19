@@ -19,7 +19,15 @@ function getNextBiweeklyDate(): Date {
 
 
 export async function lcSchedule() {
-	const contestNames = await fetchLCContests();
+	let contestNames: {key: string, name: string}[];
+	try {
+		contestNames = await fetchLCContests();
+	}
+	catch {
+		console.error(`Unable to fetch LeetCode API :(`);
+		setTimeout(lcSchedule, 2000);
+		return;
+	}
 	const biweekly = contestNames.filter(o =>
 		o.key.match(/^biweekly-contest-(\d+)$/)
 	);

@@ -5,7 +5,7 @@ config();
 import { FastifyInstance } from "fastify";
 import { startserver } from "./api/server";
 import { botInit } from "./bot/bot";
-import { contestScheduler } from "./helpers/scheduler";
+import { contestScheduler, renewScheduler } from "./helpers/scheduler";
 
 if (process.env.BOT_TOKEN === undefined ||
 	process.env.RUN_METHOD === undefined ||
@@ -23,4 +23,5 @@ startserver().then((s) => {
 	server = s;
 });
 contestScheduler().catch(e => console.error(e));
+renewScheduler().catch(e => console.error(e));
 botInit().catch(e => console.error(e));
